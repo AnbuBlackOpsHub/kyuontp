@@ -41,16 +41,14 @@ ENABLE_SINGLETON = false
 -- ✅ ADD THIS — QUEUE ON TELEPORT TO ITSELF
 local TeleportScript = [[
     task.wait(1)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/AnbuBlackOpsHub/kyuontp/kyuontp.lua", true))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/AnbuBlackOpsHub/kyuontp/refs/heads/main/kyuontp.lua", true))()
 ]]
 
-pcall(function()
-    syn.queue_on_teleport(TeleportScript)
-end)
-
-pcall(function()
+if queue_on_teleport then
     queue_on_teleport(TeleportScript)
-end)
+elseif syn and syn.queue_on_teleport then
+    syn.queue_on_teleport(TeleportScript)
+end
 -- =======================================
 
 -- ========== RETRY LOADER ==========
